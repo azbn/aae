@@ -1,0 +1,21 @@
+{
+	"is_dev" : true,
+	"path" : {
+		"static" : "./app/static"
+	},
+	"express" : {
+		"port" : {
+			"http" : 8080,
+			"https" : 8081
+		}
+	},
+	"mysql" : {
+		"host" : "localhost",
+		"user" : "app_azbn_ru",
+		"password" : "app_azbn_ru",
+		"database" : "azbn_ru",
+		"t" : {
+			"main" : "main"
+		}
+	}
+}
