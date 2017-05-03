@@ -127,7 +127,7 @@ var Azbn = function(p){
 		if(ctrl.__mdls[uid]) {
 			
 		} else {
-			ctrl.__mdls[uid] = new require(path.join(__dirname, 'mdls', uid))(ctrl, p || {});
+			ctrl.__mdls[uid] = new require(__dirname + '/mdls/' + uid)(ctrl, p || {});
 		}
 		return ctrl.__mdls[uid];
 	};
@@ -135,6 +135,13 @@ var Azbn = function(p){
 	ctrl.setMdl = function(uid, mdl) {
 		ctrl.__mdls[uid] = mdl;
 		return ctrl.__mdls[uid];
+	};
+	
+	ctrl.processInfo = function() {
+		return {
+			uptime : process.uptime(),
+			memory : process.memoryUsage(),
+		};
 	};
 	
 	return ctrl;

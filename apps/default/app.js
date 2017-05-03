@@ -9,3 +9,5 @@ var app = azbn.loadApp(module);
 //console.log(app.mdl('config'));
 
 azbn.echo('Start app ' + module.filename);
+
+azbn.echo(azbn.processInfo());
