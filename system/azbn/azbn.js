@@ -12,7 +12,10 @@ var Azbn = function(p){
 	
 	ctrl.version = 0.1;
 	
-	ctrl.isDev = function(){
+	ctrl.isDev = function(yes){
+		if(ctrl.is_def(yes)) {
+			ctrl.__is_dev = yes;
+		}
 		return ctrl.__is_dev;
 	};
 	
@@ -45,6 +48,17 @@ var Azbn = function(p){
 	
 	ctrl.randstr = function(l) {
 		return (Math.random().toString(l || 36).split('.'))[1];
+	};
+	
+	ctrl.randitem = function(arr) {
+		var rand = Math.floor(Math.random() * arr.length);
+		return arr[rand];
+	};
+	
+	ctrl.randint = function(min, max) {
+		min = min || 0;
+		max = max || ctrl.now();
+		return min + Math.floor(Math.random() * (max + 1 - min));
 	};
 	
 	ctrl.is_def = function(v) {

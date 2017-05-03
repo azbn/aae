@@ -46,6 +46,12 @@ describe('system/azbn/azbn', function(){
 		expect(azbn.get('random_parameter_number') == azbn.get('random_parameter_string')).toBe(true);
 		expect(azbn.get('random_parameter_number') === azbn.get('random_parameter_string')).toBe(false);
 		
+		expect(azbn.inArray(azbn.randitem(_randstr), _randstr)).toBe(true);
+		
+		expect(azbn.isDev()).toBe(true);
+		expect(azbn.isDev(true)).toBe(true);
+		expect(azbn.isDev(false)).toBe(false);
+		
 		done();
 		
 	});
