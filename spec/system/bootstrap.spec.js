@@ -17,7 +17,7 @@ describe('system/bootstrap', function(){
 	it('Создание объекта azbn', function(done) {
 		
 		expect(typeof azbn == 'object').toBe(true);
-		expect(typeof azbn.version == 'float').toBe(true);
+		expect(typeof azbn.version == 'number').toBe(true);
 		expect(typeof azbn.loadApp == 'function').toBe(true);
 		done();
 		

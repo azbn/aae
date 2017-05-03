@@ -21,4 +21,33 @@ describe('system/azbn/azbn', function(){
 		
 	});
 	
+	it('Проверка функций', function(done) {
+		
+		var _now = azbn.now();
+		var _randstr = azbn.randstr();
+		
+		var random_parameter_number = 234;
+		var random_parameter_string = '' + 234;
+		
+		azbn.set('random_parameter_number', random_parameter_number);
+		azbn.set('random_parameter_string', random_parameter_string);
+		
+		expect(typeof _now == 'number').toBe(true);
+		expect(parseInt(_now) == _now).toBe(true);
+		expect(parseFloat(_now) == _now).toBe(true);
+		
+		expect(typeof _randstr == 'string').toBe(true);
+		expect('' + _randstr == _randstr).toBe(true);
+		
+		expect(azbn.is_null(null)).toBe(true);
+		expect(azbn.is_null(_now)).toBe(false);
+		expect(azbn.is_null(_randstr)).toBe(false);
+		
+		expect(azbn.get('random_parameter_number') == azbn.get('random_parameter_string')).toBe(true);
+		expect(azbn.get('random_parameter_number') === azbn.get('random_parameter_string')).toBe(false);
+		
+		done();
+		
+	});
+	
 });
