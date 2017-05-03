@@ -4,9 +4,21 @@
   "description": "",
   "main": "aae.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node --verbose --junitreport spec"
   },
   "keywords": [],
   "author": "= <alexander.zybin@yandex.ru>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.4.0",
+    "cheerio": "^0.22.0",
+    "mysql": "^2.13.0",
+    "nedb": "^1.8.0",
+    "node-telegram-bot-api": "^0.27.1",
+    "nodemailer": "^4.0.1",
+    "optimist": "^0.6.1",
+    "request": "^2.81.0",
+    "vow": "^0.4.15",
+    "winston": "^2.3.1"
+  }
 }

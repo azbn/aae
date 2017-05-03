@@ -10,6 +10,8 @@ var Azbn = function(p){
 	
 	ctrl.azbn = ctrl;
 	
+	ctrl.version = 0.1;
+	
 	ctrl.isDev = function(){
 		return ctrl.__is_dev;
 	};
