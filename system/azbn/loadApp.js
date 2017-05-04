@@ -68,6 +68,10 @@ module.exports = function(loading_app){
 			}
 			
 		},
+		loadJSON : function(uid) {
+			return require(ctrl.path.data + '/' + uid);
+		},
+		
 	};
 	
 	return ctrl;
