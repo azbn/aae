@@ -1,5 +1,9 @@
 'use strict';
 
+var _
+	, fs = require('fs')
+;
+
 var Azbn = function(p){
 	
 	var ctrl = {
@@ -147,6 +151,9 @@ var Azbn = function(p){
 	
 	ctrl.loadJSON = function(uid) {
 		return require(__dirname + '/../../common/' + uid);
+	};
+	ctrl.saveJSON = function(uid, o) {
+		fs.writeFileSync(__dirname + '/../../common/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
 	};
 	
 	return ctrl;

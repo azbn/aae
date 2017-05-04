@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path')
+	, fs = require('fs')
 	, child_process = require('child_process')
 	, fork = child_process.fork
 	, spawn = child_process.spawn
@@ -69,7 +70,10 @@ module.exports = function(loading_app){
 			
 		},
 		loadJSON : function(uid) {
-			return require(ctrl.path.data + '/' + uid);
+			return require(ctrl.path.data + '/' + uid + '.json');
+		},
+		saveJSON : function(uid, o) {
+			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
 		},
 		
 	};
