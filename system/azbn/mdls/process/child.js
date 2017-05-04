@@ -13,13 +13,15 @@ var _ = function(azbn, p) {
 			
 			if(command && command != '') {
 				
-				var _process = fork(command, [ //__dirname + '/../' + azbn.mdl('cfg').path.fork + '/' + command
+				data = data || {};
+				
+				var _process = fork(__dirname + '/../../../../common/fork/' + command, [ //__dirname + '/../' + azbn.mdl('cfg').path.fork + '/' + command
 					ctrl.getCliData(data)
 				], {
-					//cwd : __dirname + '/../',
+					cwd : __dirname + '/../../../../',
 				});
 				
-				_process.on('message', function(msg){
+				_process.on('message', function(_msg){
 					
 					/*
 					if(msg.status == 0) {
@@ -27,7 +29,7 @@ var _ = function(azbn, p) {
 					}
 					*/
 					
-					cb(_process, msg);
+					cb(_process, _msg);
 					
 				});
 				

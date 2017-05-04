@@ -18,3 +18,13 @@ azbn.mdl('process/child').cli('chcp 65001 | dir', {}, function(resp){
 });
 */
 
+azbn.mdl('process/child').fork('default', {test : '123', text : 'привет!'}, function(_process, _msg){
+	
+	//console.log(_msg);
+	
+	if(_msg.kill_child == 0) {
+		//_process.kill();
+	}
+	
+});
+
