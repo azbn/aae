@@ -11,3 +11,9 @@ var app = azbn.loadApp(module);
 azbn.echo('Start app ' + module.filename);
 
 azbn.echo(azbn.processInfo());
+
+/*
+azbn.mdl('process/child').cli('chcp 65001 | dir', {}, function(resp){
+	console.log(resp);
+});
+*/
