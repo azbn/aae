@@ -13,23 +13,23 @@ var _ = function(azbn, p) {
 			
 			if(command && command != '') {
 				
-				/*
-				var _process = fork(__dirname + '/../' + azbn.mdl('cfg').path.fork + '/' + command, [
+				var _process = fork(command, [ //__dirname + '/../' + azbn.mdl('cfg').path.fork + '/' + command
 					ctrl.getCliData(data)
 				], {
-					cwd : __dirname + '/../',
+					//cwd : __dirname + '/../',
 				});
 				
 				_process.on('message', function(msg){
 					
+					/*
 					if(msg.status == 0) {
 						msg.timing = timing.end();
 					}
+					*/
 					
 					cb(_process, msg);
 					
 				});
-				*/
 				
 			} else {
 				

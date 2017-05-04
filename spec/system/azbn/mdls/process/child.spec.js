@@ -21,7 +21,7 @@ describe('system/azbn/mdls/process/child', function(){
 		
 	});
 	
-	it('Выполнение команды (функци cli)', function(done) {
+	it('Выполнение команды (функция cli)', function(done) {
 		
 		var cmd = 'ls -la';
 		
@@ -37,6 +37,12 @@ describe('system/azbn/mdls/process/child', function(){
 			done();
 			
 		});
+		
+	});
+	
+	it('Создание подпроцесса node.js (функция fork)', function(done) {
+		
+		done();
 		
 	});
 	
