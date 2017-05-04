@@ -145,8 +145,8 @@ var Azbn = function(p){
 		};
 	};
 	
-	ctrl.loadJSONConfig = function(uid) {
-		return require(__dirname + '/../../common/config/' + uid);
+	ctrl.loadJSON = function(uid) {
+		return require(__dirname + '/../../common/' + uid);
 	};
 	
 	return ctrl;

@@ -5,7 +5,10 @@ var mysql = require('mysql');
 var _ = function(azbn, p) {
 	
 	var _p = p || {
-		
+		host : 'localhost',
+		user : '',
+		password : '',
+		database : '',
 	};
 	
 	var ctrl = mysql.createConnection({
