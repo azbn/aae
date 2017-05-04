@@ -42,7 +42,22 @@ describe('system/azbn/mdls/process/child', function(){
 	
 	it('Создание подпроцесса node.js (функция fork)', function(done) {
 		
-		done();
+		var cmd = 'default';
+		
+		var _t = azbn.now();
+		
+		azbn.mdl('process/child').fork(cmd, {test : _t,}, function(_process, _msg){
+			
+			if(_msg.kill_child == 0) {
+				_process.kill();
+			}
+			
+			expect(typeof _msg == 'object').toBe(true);
+			expect(typeof _msg.data == 'object').toBe(true);
+			expect(_msg.data.test == _t).toBe(true);
+			done();
+			
+		});
 		
 	});
 	

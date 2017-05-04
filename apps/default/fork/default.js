@@ -1,6 +1,6 @@
 'use strict';
 
-var azbn = new require(__dirname + '/../../system/bootstrap')({
+var azbn = new require(__dirname + '/../../../system/bootstrap')({
 	
 });
 
@@ -12,6 +12,6 @@ var _data = azbn.mdl('process/child').parseCliData(process.argv);
 
 process.send({
 	kill_child : 1,
-	azbn_fork : 1,
+	app_fork : 1,
 	data : _data,
 })

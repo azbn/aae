@@ -124,10 +124,11 @@ var Azbn = function(p){
 	};
 	
 	ctrl.mdl = function(uid, p) {
+		var _mdl = uid.split(':');
 		if(ctrl.__mdls[uid]) {
 			
 		} else {
-			ctrl.__mdls[uid] = new require(__dirname + '/mdls/' + uid)(ctrl, p || {});
+			ctrl.__mdls[uid] = new require(__dirname + '/mdls/' + _mdl[0])(ctrl, p || {});
 		}
 		return ctrl.__mdls[uid];
 	};
@@ -142,6 +143,10 @@ var Azbn = function(p){
 			uptime : process.uptime(),
 			memory : process.memoryUsage(),
 		};
+	};
+	
+	ctrl.loadJSONConfig = function(uid) {
+		return require(__dirname + '/../../common/config/' + uid);
 	};
 	
 	return ctrl;

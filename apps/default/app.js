@@ -20,11 +20,26 @@ azbn.mdl('process/child').cli('chcp 65001 | dir', {}, function(resp){
 
 azbn.mdl('process/child').fork('default', {test : '123', text : 'привет!'}, function(_process, _msg){
 	
-	//console.log(_msg);
+	console.log(_msg);
 	
 	if(_msg.kill_child == 0) {
-		//_process.kill();
+		_process.kill();
 	}
 	
 });
 
+app.fork('default', {test : '234', text : 'hello!'}, function(_process, _msg){
+	
+	console.log(_msg);
+	
+	if(_msg.kill_child == 0) {
+		_process.kill();
+	}
+	
+});
+
+azbn.mdl('process/child').cli('chcp 65001 | dir', {test : '123', text : 'привет!'}, function(_resp){
+	
+	console.log(_resp);
+	
+});

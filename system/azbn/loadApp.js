@@ -1,6 +1,9 @@
 'use strict';
 
 var path = require('path')
+	, child_process = require('child_process')
+	, fork = child_process.fork
+	, spawn = child_process.spawn
 ;
 
 module.exports = function(loading_app){
@@ -24,19 +27,45 @@ module.exports = function(loading_app){
 			
 			app : loading_app_path,
 			mdls : path.join(loading_app_path, 'mdls'),
+			fork : path.join(loading_app_path, 'fork'),
 			data : path.join(loading_app_path, 'data'),
 			config : path.join(loading_app_path, 'config'),
 			
 		},
 		mdl : function(uid, p) {
 			
+			var _mdl = uid.split(':');
 			if(ctrl.__mdls[uid]) {
 				
 			} else {
-				ctrl.__mdls[uid] = new require(path.join(ctrl.path.mdls, uid))(ctrl, p || {});
+				ctrl.__mdls[uid] = new require(path.join(ctrl.path.mdls, _mdl[0]))(ctrl, p || {});
 			}
-			
 			return ctrl.__mdls[uid];
+			
+		},
+		fork : function(command, data, cb) {
+			
+			if(command && command != '') {
+				
+				data = data || {};
+				
+				var _process = fork(ctrl.path.fork + '/' + command, [
+					azbn.mdl('process/child').getCliData(data)
+				], {
+					cwd : ctrl.path.app,
+				});
+				
+				_process.on('message', function(_msg){
+					
+					cb(_process, _msg);
+					
+				});
+				
+			} else {
+				
+				cb({});
+				
+			}
 			
 		},
 	};
