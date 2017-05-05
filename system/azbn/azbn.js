@@ -150,10 +150,18 @@ var Azbn = function(p){
 	};
 	
 	ctrl.loadJSON = function(uid) {
-		return require(__dirname + '/../../common/' + uid);
+		var path = __dirname + '/../../common/' + uid + '.json';
+		if (fs.existsSync(path)) {
+			return require(path);
+		} else {
+			return {};
+		}
 	};
 	ctrl.saveJSON = function(uid, o) {
 		fs.writeFileSync(__dirname + '/../../common/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
+	};
+	ctrl.saveFile = function(uid, str) {
+		fs.writeFileSync(__dirname + '/../../common/' + (uid || 'default.txt'), str || '');
 	};
 	
 	return ctrl;

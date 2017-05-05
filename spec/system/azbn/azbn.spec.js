@@ -32,6 +32,8 @@ describe('system/azbn/azbn', function(){
 		azbn.set('random_parameter_number', random_parameter_number);
 		azbn.set('random_parameter_string', random_parameter_string);
 		
+		var json_object = azbn.loadJSON(azbn.randstr());
+		
 		expect(typeof _now == 'number').toBe(true);
 		expect(parseInt(_now) == _now).toBe(true);
 		expect(parseFloat(_now) == _now).toBe(true);
@@ -51,6 +53,8 @@ describe('system/azbn/azbn', function(){
 		expect(azbn.isDev()).toBe(true);
 		expect(azbn.isDev(true)).toBe(true);
 		expect(azbn.isDev(false)).toBe(false);
+		
+		expect(azbn.is_def(json_object) && typeof json_object == 'object').toBe(true);
 		
 		done();
 		

@@ -70,10 +70,18 @@ module.exports = function(loading_app){
 			
 		},
 		loadJSON : function(uid) {
-			return require(ctrl.path.data + '/' + uid + '.json');
+			var path = ctrl.path.data + '/' + uid + '.json';
+			if (fs.existsSync(path)) {
+				return require(path);
+			} else {
+				return {};
+			}
 		},
 		saveJSON : function(uid, o) {
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
+		},
+		saveFile : function(uid, str) {
+			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default.txt'), str || '');
 		},
 		
 	};
