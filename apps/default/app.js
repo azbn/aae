@@ -45,6 +45,4 @@ azbn.mdl('process/child').cli('chcp 65001 | dir', {test : '123', text : 'при�
 });
 
 
-app.mkDataDir('test/' + azbn.randstr() + '/' + azbn.randstr());
-
-azbn.echo(typeof []);
+app.mkDataDir(['test', azbn.uuid1(), azbn.uuid4()]);

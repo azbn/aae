@@ -94,7 +94,7 @@ module.exports = function(loading_app){
 		
 		mkDataDir : function(uid) {
 			if(typeof uid != 'string') {
-				uid = path.join(uid);
+				uid = uid.join('/');
 			}
 			var _path2create = ctrl.path.data + '/' + uid;
 			if(!fs.existsSync(_path2create)){
