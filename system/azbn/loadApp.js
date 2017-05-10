@@ -20,10 +20,13 @@ module.exports = function(loading_app){
 	var ctrl = {};
 	
 	ctrl = {
+		
 		azbn : azbn,
+		
 		__mdls : {
 			
 		},
+		
 		path : {
 			
 			app : loading_app_path,
@@ -33,6 +36,7 @@ module.exports = function(loading_app){
 			config : path.join(loading_app_path, 'config'),
 			
 		},
+		
 		mdl : function(uid, p) {
 			
 			var _mdl = uid.split(':');
@@ -44,6 +48,7 @@ module.exports = function(loading_app){
 			return ctrl.__mdls[uid];
 			
 		},
+		
 		fork : function(command, data, cb) {
 			
 			if(command && command != '') {
@@ -69,6 +74,7 @@ module.exports = function(loading_app){
 			}
 			
 		},
+		
 		loadJSON : function(uid) {
 			var _path = ctrl.path.data + '/' + uid + '.json';
 			if (fs.existsSync(_path)) {
@@ -77,13 +83,19 @@ module.exports = function(loading_app){
 				return {};
 			}
 		},
+		
 		saveJSON : function(uid, o) {
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
 		},
+		
 		saveFile : function(uid, str) {
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default.txt'), str || '');
 		},
+		
 		mkDataDir : function(uid) {
+			if(typeof uid != 'string') {
+				uid = path.join(uid);
+			}
 			var _path2create = ctrl.path.data + '/' + uid;
 			if(!fs.existsSync(_path2create)){
 				var _uid_arr = uid.split('/');
