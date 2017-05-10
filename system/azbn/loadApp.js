@@ -70,9 +70,9 @@ module.exports = function(loading_app){
 			
 		},
 		loadJSON : function(uid) {
-			var path = ctrl.path.data + '/' + uid + '.json';
-			if (fs.existsSync(path)) {
-				return require(path);
+			var _path = ctrl.path.data + '/' + uid + '.json';
+			if (fs.existsSync(_path)) {
+				return require(_path);
 			} else {
 				return {};
 			}
@@ -82,6 +82,25 @@ module.exports = function(loading_app){
 		},
 		saveFile : function(uid, str) {
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default.txt'), str || '');
+		},
+		mkDataDir : function(uid) {
+			var _path2create = ctrl.path.data + '/' + uid;
+			if(!fs.existsSync(_path2create)){
+				var _uid_arr = uid.split('/');
+				var _uid_substr = '';
+				for(var _j in _uid_arr) {
+					var _d = _uid_arr[_j];
+					_uid_substr = _uid_substr + '/' + _d;
+					try {
+						var _full_path = ctrl.path.data + _uid_substr;
+						if(!fs.existsSync(_full_path)){
+							fs.mkdirSync(_full_path);
+						}
+					} catch (err) {
+						azbn.echo_dev('Error on create directory ' + err);
+					}
+				}
+			}
 		},
 		
 	};
