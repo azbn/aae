@@ -65,9 +65,6 @@ var Azbn = function(p){
 		return min + Math.floor(Math.random() * (max + 1 - min));
 	};
 	
-	ctrl.uuid1 = require('uuid/v1');
-	ctrl.uuid4 = require('uuid/v4');
-	
 	ctrl.is_def = function(v) {
 		if(v == undefined || typeof v == 'undefined') {
 			return false;
