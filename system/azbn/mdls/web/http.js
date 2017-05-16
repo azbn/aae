@@ -23,7 +23,7 @@ var _ = function(azbn, p) {
 			request({
 				method : method,
 				url : url,
-				formData : data,
+				form : data,
 			}, cb);
 		},
 		
