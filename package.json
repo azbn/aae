@@ -4,7 +4,8 @@
   "description": "",
   "main": "aae.js",
   "scripts": {
-    "test": "jasmine-node --verbose --junitreport spec"
+    "aae:test": "jasmine-node --verbose --junitreport spec",
+    "aae:update": "git stash && git pull"
   },
   "keywords": [],
   "author": "= <alexander.zybin@yandex.ru>",
