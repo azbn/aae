@@ -5,6 +5,7 @@ var path = require('path')
 	, child_process = require('child_process')
 	, fork = child_process.fork
 	, spawn = child_process.spawn
+	, winston = require('winston')
 ;
 
 module.exports = function(loading_app){
@@ -114,6 +115,16 @@ module.exports = function(loading_app){
 				}
 			}
 		},
+		
+		log : new winston.Logger({
+			transports : [
+				new winston.transports.Console({
+					colorize	:	true,
+					level		:	'debug',
+					label		:	loading_app_path.split('/').slice(-2).join('/'),
+				}),
+			]
+		}),
 		
 	};
 	
