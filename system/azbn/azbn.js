@@ -2,6 +2,8 @@
 
 var _
 	, fs = require('fs')
+	//, path = require('path')
+	//, url = require('url')
 ;
 
 var Azbn = function(p){
@@ -150,9 +152,9 @@ var Azbn = function(p){
 	};
 	
 	ctrl.loadJSON = function(uid) {
-		var path = __dirname + '/../../common/' + uid + '.json';
-		if (fs.existsSync(path)) {
-			return require(path);
+		var _path = __dirname + '/../../common/' + uid + '.json';
+		if (fs.existsSync(_path)) {
+			return require(_path);
 		} else {
 			return {};
 		}
