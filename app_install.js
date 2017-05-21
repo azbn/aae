@@ -11,13 +11,28 @@ var argv = require('optimist').argv;
 
 var app_reg = azbn.loadJSON('apps');
 
-if(argv.who && argv.repo && argv.who != '' && argv.repo != '') {
+
+var parseLink = function(link) {
+	var arr = link.split('/');
+	return {
+		link : link,
+		developer : arr[3],
+		repo : arr[4],
+		app : {
+			uid : arr[4].replace('aae.app.', ''),
+		},
+	};
+}
+
+var repo_url = argv.repo || '';
+
+if(argv.repo != '' && argv.repo.match(/^(http)/ig)) {
 	
-	if(argv.repo.match(/^(aae.app.)/)) {
+	var repo = parseLink(argv.repo);
+	
+	//if(argv.repo.match(/^(aae.app.)/)) {
 		
-		var local_app_uid = [argv.who, argv.repo].join('/');
-		
-		azbn.echo('Ok, it is right uid: ' + argv.repo);
+		var local_app_uid = [repo.developer, repo.app.uid].join('/');
 		
 		if(app_reg.items[local_app_uid]) {
 			
@@ -25,25 +40,29 @@ if(argv.who && argv.repo && argv.who != '' && argv.repo != '') {
 			
 		} else {
 			
-			var app_uid = argv.repo.replace('aae.app.', '');
-			var app_path = app_uid.split('.').join('/');
+			var app_path = repo.app.uid.split('.').join('/');
+			var _app_path = 'apps/' + repo.developer + '/' + app_path;
 			
-			azbn.mdl('process/child').cli('git clone https://github.com/' + argv.who + '/' + argv.repo + ' apps/' + argv.who + '/' + app_path, {}, function(data){
+			azbn.mdl('process/child').cli('git clone ' + repo.link + ' ' + _app_path, {}, function(data){
 				
 				//_data = JSON.parse(data);
 				
 				if(data.code == 0) {
 					
 					app_reg.items[local_app_uid] = {
-						created_at : azbn.now(),
-						who : argv.who,
-						repo : argv.repo,
-						path : 'apps/' + app_path,
+						installed : {
+							at : azbn.now(),
+							from : repo.link,
+						},
+						developer : repo.developer,
+						repo : repo.repo,
+						uid : local_app_uid,
+						path : _app_path,
 					};
 					
 					azbn.saveJSON('apps', app_reg);
 					
-					azbn.echo('Installed');
+					azbn.echo('App ' + local_app_uid + ' was installed');
 					
 				} else {
 					
@@ -55,6 +74,6 @@ if(argv.who && argv.repo && argv.who != '' && argv.repo != '') {
 			
 		}
 		
-	}
+	//}
 	
 }
