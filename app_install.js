@@ -34,6 +34,10 @@ if(argv.repo != '' && argv.repo.match(/^(http)/ig)) {
 		
 		var local_app_uid = [repo.developer, repo.app.uid].join('/');
 		
+		if(!app_reg.items) {
+			app_reg.items = {}
+		}
+		
 		if(app_reg.items[local_app_uid]) {
 			
 			azbn.echo('Ooops! App ' + local_app_uid + ' was installed');
