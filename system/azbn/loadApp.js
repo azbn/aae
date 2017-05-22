@@ -8,7 +8,7 @@ var path = require('path')
 	, winston = require('winston')
 ;
 
-module.exports = function(loading_app){
+module.exports = function(loading_app, workdirectory){
 	
 	//console.log(loading_app);
 	
@@ -16,7 +16,9 @@ module.exports = function(loading_app){
 	
 	loading_app.azbn = azbn;
 	
-	var loading_app_path = path.dirname(loading_app.filename);
+	workdirectory = workdirectory || '';
+	
+	var loading_app_path = path.dirname(loading_app.filename) . workdirectory;
 	
 	var ctrl = {};
 	
