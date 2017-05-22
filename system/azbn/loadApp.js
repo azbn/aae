@@ -18,7 +18,7 @@ module.exports = function(loading_app, workdirectory){
 	
 	workdirectory = workdirectory || '';
 	
-	var loading_app_path = path.dirname(loading_app.filename) . workdirectory;
+	var loading_app_path = path.dirname(loading_app.filename) + workdirectory;
 	
 	var ctrl = {};
 	
