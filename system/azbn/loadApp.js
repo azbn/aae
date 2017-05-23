@@ -91,6 +91,15 @@ module.exports = function(loading_app, workdirectory){
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default') + '.json', JSON.stringify(o || {}));
 		},
 		
+		loadFile : function(uid) {
+			var _path = ctrl.path.data + '/' + uid;
+			if (fs.existsSync(_path)) {
+				return fs.readFileSync(_path, {encoding : 'utf8'});
+			} else {
+				return '';
+			}
+		},
+		
 		saveFile : function(uid, str) {
 			fs.writeFileSync(ctrl.path.data + '/' + (uid || 'default.txt'), str || '');
 		},
