@@ -81,6 +81,7 @@ module.exports = function(loading_app, workdirectory){
 		loadJSON : function(uid) {
 			var _path = ctrl.path.data + '/' + uid + '.json';
 			if (fs.existsSync(_path)) {
+				delete require.cache[_path];
 				return require(_path);
 			} else {
 				return {};
