@@ -138,6 +138,14 @@ module.exports = function(loading_app, workdirectory){
 			]
 		}),
 		
+		clearRequireCache : function(r) {
+			if(r) {
+				Object.keys(r.cache).forEach(function(key) {
+					delete r.cache[key];
+				});
+			}
+		},
+		
 	};
 	
 	return ctrl;
