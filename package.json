@@ -33,6 +33,7 @@
     "method-override": "^2.3.9",
     "mysql": "^2.14.1",
     "nedb": "^1.8.0",
+    "needle": "^2.1.0",
     "node-telegram-bot-api": "^0.27.1",
     "nodemailer": "^4.1.0",
     "optimist": "^0.6.1",
