@@ -63,6 +63,8 @@ var _ = function(azbn, p) {
 			});
 			
 		},
+
+		list : fs.readdir,
 		
 	};
 	
