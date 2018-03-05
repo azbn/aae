@@ -23,6 +23,7 @@
     "connect-nedb-session": "0.0.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "express-basic-auth": "^1.1.4",
     "express-mysql-session": "^1.2.2",
     "express-session": "^1.15.5",
     "express-sessions": "^1.0.6",
